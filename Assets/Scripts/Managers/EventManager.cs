@@ -10,6 +10,8 @@ public class EventManager : MonoBehaviour
     public event Action OnIdling;
     public event Action OnWalking;
     public event Action OnHidingInputPressed;
+    public event Action OnMovementPressed;
+    public event Action OnStoppedMoving;
 
     private void Awake()
     {
@@ -35,10 +37,24 @@ public class EventManager : MonoBehaviour
     }
     public void HideInputPressed()
     {
-        print("hide");
         if ( OnHidingInputPressed != null )
         {
             OnHidingInputPressed();
+        }
+    }
+
+    public void MovementPressed()
+    {
+        if( OnMovementPressed != null)
+        {
+            OnMovementPressed();
+        }
+    }
+    public void StoppedMoving()
+    {
+        if(OnStoppedMoving != null)
+        {
+            OnStoppedMoving();
         }
     }
 }

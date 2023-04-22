@@ -26,6 +26,8 @@ public class StateManager : MonoBehaviour
     {
         _currentState = IdlingState;
         _currentState.EnterState(this);
+        EventManager.Instance.OnMovementPressed += SwitchToWalking;
+        EventManager.Instance.OnStoppedMoving += SwitchToIdle;
     }
 
     // Update is called once per frame
@@ -42,5 +44,23 @@ public class StateManager : MonoBehaviour
     {
         _currentState = newState;
         newState.EnterState(this);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>'
+    ///  <param name="manager">Takes a parameter of type StateManager</param>
+    private void SwitchToWalking()
+    {
+        print("switch to walking");
+        IdlingState.ExitState(this);
+        SwitchState(WalkingState);
+    }
+
+    private void SwitchToIdle()
+    {
+        print("switch to idle");
+        WalkingState.ExitState(this);
+        SwitchState(IdlingState);
     }
 }

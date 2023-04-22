@@ -26,10 +26,14 @@ public class InputManager : MonoBehaviour
     {
         _mainInput.FindAction("MouseMovement").performed += GetMousePos;
         _mainInput.FindAction("MouseMovement").canceled += GetMousePos;
+
         _mainInput.FindAction("KeyboardVector2").started += GetKeyboardVector2;
         _mainInput.FindAction("KeyboardVector2").canceled += GetKeyboardVector2;
+
         _mainInput.FindAction("MouseClick").started += MouseClicked;
+
         _mainInput.FindAction("Hide").performed += GetHideInput;
+
         _mainInput.FindAction("Arrows").performed += GetArrowsInput;
     }
 
@@ -52,6 +56,11 @@ public class InputManager : MonoBehaviour
     private void GetKeyboardVector2(InputAction.CallbackContext context)
     {
         WASDVector2 = context.ReadValue<Vector2>();
+        if (WASDVector2.x != 0)
+        {
+            EventManager.Instance.MovementPressed();
+        }
+        
     }
 
     private void GetHideInput(InputAction.CallbackContext context)
@@ -67,7 +76,7 @@ public class InputManager : MonoBehaviour
     {
         _mainInput.FindAction("MouseMovement").performed -= GetMousePos;
         _mainInput.FindAction("MouseMovement").canceled -= GetMousePos;
-        _mainInput.FindAction("KeyboardVector2").started -= GetKeyboardVector2;
+        _mainInput.FindAction("KeyboardVector2").performed -= GetKeyboardVector2;
         _mainInput.FindAction("KeyboardVector2").canceled -= GetKeyboardVector2;
         _mainInput.FindAction("MouseClick").started -= MouseClicked;
         _mainInput.FindAction("Hide").performed -= GetHideInput;
