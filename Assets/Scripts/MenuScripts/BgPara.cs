@@ -32,7 +32,7 @@ public class BgPara : MonoBehaviour
         transform.position = -pos;
 
         //Then I make this variable basically calculating where the image will be.
-        var _pos_n = new Vector2(_startPos.x - (pos.x * diff), _startPos.y - (pos.y * diff));
+        var _pos_n = new Vector2(_startPos.x - (pos.x/10 * diff), _startPos.y - (pos.y/10 * diff));
 
         //These variable full form is main_x position of the image and main_y positiong of the image.
         var mX = 0f;
