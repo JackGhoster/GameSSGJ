@@ -37,7 +37,8 @@ public class InputManager : MonoBehaviour
 
     private void GetMousePos(InputAction.CallbackContext context)
     {
-        MousePos = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+        //MousePos = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+        MousePos = context.ReadValue<Vector2>();
     }
 
     private void GetKeyboardVector2(InputAction.CallbackContext context)
