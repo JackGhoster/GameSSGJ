@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StateManager : MonoBehaviour
@@ -13,6 +11,8 @@ public class StateManager : MonoBehaviour
     public IdlingState IdlingState { get; set; }
     public WalkingState WalkingState { get; set; }
     public HidingState HidingState { get; set; }
+
+    private bool _hiding = false;
 
     private void Awake()
     {
@@ -28,6 +28,7 @@ public class StateManager : MonoBehaviour
         _currentState.EnterState(this);
         EventManager.Instance.OnMovementPressed += SwitchToWalking;
         EventManager.Instance.OnStoppedMoving += SwitchToIdle;
+        EventManager.Instance.OnHidingInputPressed += SwitchToHiding;
     }
 
     // Update is called once per frame
@@ -47,20 +48,42 @@ public class StateManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Switches to WalkingState, this method is subscribed to OnMovementPressed event from EventManager!
     /// </summary>'
-    ///  <param name="manager">Takes a parameter of type StateManager</param>
     private void SwitchToWalking()
     {
-        print("switch to walking");
+        //print("switch to walking");
         IdlingState.ExitState(this);
-        SwitchState(WalkingState);
+        if(_hiding == false )
+        {
+           SwitchState(WalkingState);
+        }
+            
     }
-
+    /// <summary>
+    /// Switches to IdlingState, this method is subscribed to OnStoppedMoving event from EventManager!
+    /// </summary>'
     private void SwitchToIdle()
     {
-        print("switch to idle");
+        //print("switch to idle");
         WalkingState.ExitState(this);
         SwitchState(IdlingState);
+    }
+
+    private void SwitchToHiding()
+    {
+        IdlingState.ExitState(this);
+        WalkingState.ExitState(this);
+        _hiding = !_hiding;
+        if( _hiding == true )
+        {
+            SwitchState(HidingState);
+        }
+        else
+        {
+            HidingState.ExitState(this);
+            SwitchState(IdlingState);
+        }
+            
     }
 }

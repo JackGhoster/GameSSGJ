@@ -29,7 +29,7 @@ public class WalkingBehavior : MonoBehaviour
 
     private void CheckForMovement()
     {
-        print("checking if it's standing)");
+        //print("checking if it's standing)");
         if (_rb.velocity.x == 0)
         {
             EventManager.Instance.StoppedMoving();
