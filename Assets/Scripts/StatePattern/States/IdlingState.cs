@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class IdlingState : AbstractState
 {
+    private StateManager _context;
+    private IdlingBehavior _idlingBehavior;
+
     public override void EnterState(StateManager manager)
     {
-        Debug.Log("Entering Idling State");
+        EventManager.Instance.Idling();
+        _idlingBehavior = manager.GetComponent<IdlingBehavior>();
+        _idlingBehavior.enabled = true;
     }
 
     public override void ExitState(StateManager manager)
@@ -16,7 +21,7 @@ public class IdlingState : AbstractState
 
     public override void UpdateState(StateManager manager)
     {
-        Debug.Log("Updating Idling State");
+        
     }
 
 }

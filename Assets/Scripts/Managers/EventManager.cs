@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,10 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; }
+
+    public event Action OnIdling;
+    public event Action OnWalking;
+    public event Action OnHidingInputPressed;
 
     private void Awake()
     {
@@ -14,15 +19,26 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Idling()
     {
-        
+        if(OnIdling != null)
+        {
+            OnIdling();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Walking()
     {
-        
+        if(OnWalking != null)
+        {
+            OnWalking();
+        }
+    }
+    public void HideInputPressed()
+    {
+        print("hide");
+        if ( OnHidingInputPressed != null )
+        {
+            OnHidingInputPressed();
+        }
     }
 }

@@ -53,6 +53,24 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hide"",
+                    ""type"": ""Button"",
+                    ""id"": ""81cb908b-5245-4615-956e-4e3316ba0121"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Arrows"",
+                    ""type"": ""Value"",
+                    ""id"": ""0356d9b2-27d6-44e2-97f1-fb9cd25ce97b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -132,6 +150,72 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""action"": ""MouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d659bcc4-76bf-4fc2-9d22-912737357ebc"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""f40cf0c4-ed44-412c-b364-91f660f757f7"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arrows"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a3e4c0c0-2ba6-4e24-94b4-3205d2ddbbc1"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arrows"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""99756ae2-1d3e-415f-be49-40d6773d4024"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arrows"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""997521aa-b536-4ecc-be12-84d879c326c1"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arrows"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""306dd3e2-f354-4a2e-8b88-f864320bb18c"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arrows"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -143,6 +227,8 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         m_Main_KeyboardVector2 = m_Main.FindAction("KeyboardVector2", throwIfNotFound: true);
         m_Main_MouseMovement = m_Main.FindAction("MouseMovement", throwIfNotFound: true);
         m_Main_MouseClick = m_Main.FindAction("MouseClick", throwIfNotFound: true);
+        m_Main_Hide = m_Main.FindAction("Hide", throwIfNotFound: true);
+        m_Main_Arrows = m_Main.FindAction("Arrows", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +293,8 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_KeyboardVector2;
     private readonly InputAction m_Main_MouseMovement;
     private readonly InputAction m_Main_MouseClick;
+    private readonly InputAction m_Main_Hide;
+    private readonly InputAction m_Main_Arrows;
     public struct MainActions
     {
         private @MainInput m_Wrapper;
@@ -214,6 +302,8 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         public InputAction @KeyboardVector2 => m_Wrapper.m_Main_KeyboardVector2;
         public InputAction @MouseMovement => m_Wrapper.m_Main_MouseMovement;
         public InputAction @MouseClick => m_Wrapper.m_Main_MouseClick;
+        public InputAction @Hide => m_Wrapper.m_Main_Hide;
+        public InputAction @Arrows => m_Wrapper.m_Main_Arrows;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,6 +322,12 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @MouseClick.started += instance.OnMouseClick;
             @MouseClick.performed += instance.OnMouseClick;
             @MouseClick.canceled += instance.OnMouseClick;
+            @Hide.started += instance.OnHide;
+            @Hide.performed += instance.OnHide;
+            @Hide.canceled += instance.OnHide;
+            @Arrows.started += instance.OnArrows;
+            @Arrows.performed += instance.OnArrows;
+            @Arrows.canceled += instance.OnArrows;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -245,6 +341,12 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @MouseClick.started -= instance.OnMouseClick;
             @MouseClick.performed -= instance.OnMouseClick;
             @MouseClick.canceled -= instance.OnMouseClick;
+            @Hide.started -= instance.OnHide;
+            @Hide.performed -= instance.OnHide;
+            @Hide.canceled -= instance.OnHide;
+            @Arrows.started -= instance.OnArrows;
+            @Arrows.performed -= instance.OnArrows;
+            @Arrows.canceled -= instance.OnArrows;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -267,5 +369,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         void OnKeyboardVector2(InputAction.CallbackContext context);
         void OnMouseMovement(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
+        void OnHide(InputAction.CallbackContext context);
+        void OnArrows(InputAction.CallbackContext context);
     }
 }
