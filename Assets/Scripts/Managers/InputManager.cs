@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
     public Vector2 MousePos { get; private set; }
-    public Vector2 WASDVector2 { get; set; }
+    public float HorizontalInput { get; set; }
     public Vector2 ArrowsVector2 { get; set; }
 
     private MainInput _mainInput;
@@ -56,8 +56,8 @@ public class InputManager : MonoBehaviour
 
     private void GetKeyboardVector2(InputAction.CallbackContext context)
     {
-        WASDVector2 = context.ReadValue<Vector2>();
-        if (WASDVector2.x != 0)
+        HorizontalInput = context.ReadValue<float>();
+        if (HorizontalInput != 0)
         {
             EventManager.Instance.MovementPressed();
         }

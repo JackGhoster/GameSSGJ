@@ -5,9 +5,8 @@ using UnityEngine;
 public class WalkingBehavior : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    private float _speed = 1000;
-    //private float _jumpForce = 7;
-    
+    private float _speed = 500;
+    private float _horizontalInput = 0;
 
     private void Awake()
     {
@@ -18,19 +17,22 @@ public class WalkingBehavior : MonoBehaviour
     {
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_rb != null)
         {
-            //print("walking");
-            _rb.velocity = new Vector2(InputManager.Instance.WASDVector2.x * _speed * Time.deltaTime, _rb.velocity.y);
+            _rb.velocity = new Vector2( _horizontalInput * _speed * Time.deltaTime, _rb.velocity.y);
         }
+    }
+    private void Update()
+    {
+        _horizontalInput = InputManager.Instance.HorizontalInput;
     }
 
     private void CheckForMovement()
     {
         //print("checking if it's standing)");
-        if (_rb.velocity.x == 0)
+        if (_horizontalInput == 0)
         {
             EventManager.Instance.StoppedMoving();
         }
@@ -38,10 +40,12 @@ public class WalkingBehavior : MonoBehaviour
 
     private void OnEnable()
     {
-        InvokeRepeating("CheckForMovement", 0.1f, 0.1f);
+        InvokeRepeating("CheckForMovement", 0.2f, 0.2f);
     }
     private void OnDisable()
     {
         CancelInvoke("CheckForMovement");
     }
+
+    
 }

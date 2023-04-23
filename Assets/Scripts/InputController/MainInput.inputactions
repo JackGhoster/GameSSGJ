@@ -9,7 +9,7 @@
                     "name": "KeyboardVector2",
                     "type": "Value",
                     "id": "1f084438-6ca5-4433-a9e6-102407c741cc",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -55,7 +55,7 @@
                 {
                     "name": "WASD",
                     "id": "a9e0191d-4246-45f2-8412-56e8da618a94",
-                    "path": "2DVector",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -64,30 +64,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "Negative",
                     "id": "c5a5bd88-5011-4a10-a180-b6367a6374c9",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "KeyboardVector2",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "67e39592-76f5-47be-8933-ea655f04516d",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "KeyboardVector2",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "bd99249d-6970-4f61-9794-608070906af3",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -97,8 +75,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "f3624ba3-3dbe-4fdb-b9a6-1837c2ad4e04",
+                    "name": "Positive",
+                    "id": "67e39592-76f5-47be-8933-ea655f04516d",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
