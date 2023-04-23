@@ -23,6 +23,7 @@ public class EventManager : MonoBehaviour
     public event Action OnCorrectArrowPressed;
     public event Action OnWrongArrowPressed;
     public event Action OnWonMinigame;
+    public event Action OnMinigameTimerEnded;
 
     public event Action OnArrowListRefill;
 
@@ -106,6 +107,13 @@ public class EventManager : MonoBehaviour
         if (OnWonMinigame != null)
         {
             OnWonMinigame();
+        }
+    }
+    public void MinigameTimerEnded()
+    {
+        if (OnMinigameTimerEnded != null)
+        {
+            OnMinigameTimerEnded();
         }
     }
 }
