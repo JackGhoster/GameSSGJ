@@ -47,6 +47,9 @@ TagManager:
   - name: bg
     uniqueID: 1484308215
     locked: 0
+  - name: back decorations
+    uniqueID: 1411182905
+    locked: 0
   - name: decorations
     uniqueID: 359041373
     locked: 0
