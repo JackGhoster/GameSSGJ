@@ -40,11 +40,12 @@ public class InputManager : MonoBehaviour
     private void GetArrowsInput(InputAction.CallbackContext context)
     {
         ArrowsVector2 = context.ReadValue<Vector2>();
+        EventManager.Instance.ArrowKeyPressed();
     }
 
     private void MouseClicked(InputAction.CallbackContext context)
     {
-        print("mouse clicked");
+        //print("mouse clicked");
     }
 
     private void GetMousePos(InputAction.CallbackContext context)

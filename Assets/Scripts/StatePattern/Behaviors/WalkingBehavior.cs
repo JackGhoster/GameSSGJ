@@ -5,8 +5,8 @@ using UnityEngine;
 public class WalkingBehavior : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    private float _speed = 300;
-    private float _jumpForce = 7;
+    private float _speed = 1000;
+    //private float _jumpForce = 7;
     
 
     private void Awake()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HidingBehavior : MonoBehaviour
 {
+    [SerializeField]
+    private Minigame _minigame;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,6 @@ public class HidingBehavior : MonoBehaviour
     private void OnEnable()
     {
         print("SNEAKY");
+        Instantiate(_minigame);
     }
 }

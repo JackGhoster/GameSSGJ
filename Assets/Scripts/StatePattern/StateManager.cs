@@ -12,7 +12,6 @@ public class StateManager : MonoBehaviour
     public WalkingState WalkingState { get; set; }
     public HidingState HidingState { get; set; }
 
-    private bool _hiding = false;
 
     private void Awake()
     {
@@ -29,6 +28,7 @@ public class StateManager : MonoBehaviour
         EventManager.Instance.OnMovementPressed += SwitchToWalking;
         EventManager.Instance.OnStoppedMoving += SwitchToIdle;
         EventManager.Instance.OnHidingInputPressed += SwitchToHiding;
+        EventManager.Instance.OnWrongArrowPressed += SwitchToIdle;
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class StateManager : MonoBehaviour
     {
         //print("switch to walking");
         IdlingState.ExitState(this);
-        if(_hiding == false )
+        if(GameManager.Instance.Hiding == false )
         {
            SwitchState(WalkingState);
         }
@@ -66,16 +66,34 @@ public class StateManager : MonoBehaviour
     private void SwitchToIdle()
     {
         //print("switch to idle");
-        WalkingState.ExitState(this);
+        GameManager.Instance.Hiding = false;
+        if (_currentState == HidingState)
+        {
+            HidingState.ExitState(this);
+        }
+
+        if (_currentState == WalkingState)
+        {
+            WalkingState.ExitState(this);
+        }
         SwitchState(IdlingState);
     }
 
     private void SwitchToHiding()
     {
-        IdlingState.ExitState(this);
-        WalkingState.ExitState(this);
-        _hiding = !_hiding;
-        if( _hiding == true )
+        if (_currentState == IdlingState)
+        {
+            IdlingState.ExitState(this);
+        }
+
+        if (_currentState == WalkingState)
+        {
+            WalkingState.ExitState(this);
+        }
+
+
+        GameManager.Instance.Hiding = !GameManager.Instance.Hiding;
+        if(GameManager.Instance.Hiding == true)
         {
             SwitchState(HidingState);
         }
