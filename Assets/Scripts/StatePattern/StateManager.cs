@@ -23,6 +23,7 @@ public class StateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Jack's Code
         _currentState = IdlingState;
         _currentState.EnterState(this);
         EventManager.Instance.OnMovementPressed += SwitchToWalking;
@@ -56,7 +57,7 @@ public class StateManager : MonoBehaviour
         IdlingState.ExitState(this);
         if(GameManager.Instance.Hiding == false )
         {
-           SwitchState(WalkingState);
+            SwitchState(WalkingState);
         }
             
     }
