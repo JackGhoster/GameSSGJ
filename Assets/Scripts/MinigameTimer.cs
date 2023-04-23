@@ -7,7 +7,7 @@ public class MinigameTimer : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _timeText;
-    private int _time = 5;
+    private int _time = 3;
 
     private void Start()
     {

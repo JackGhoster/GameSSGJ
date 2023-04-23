@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +39,7 @@ public class Minigame : MonoBehaviour
     /// <summary>
     /// List of variations in order: up arrow, down arrow, right arrow, left arrow
     /// </summary>
-    private List<Vector2> _variations = new List<Vector2>() 
+    private List<Vector2> _variations = new List<Vector2>()
     {
         //up
         new Vector2(x: 0, y: 1),
@@ -93,19 +92,21 @@ public class Minigame : MonoBehaviour
 
     private void CheckForInput()
     {
-        if(InputManager.Instance.ArrowsVector2 == _arrows[0])
+        if (InputManager.Instance.ArrowsVector2 == _arrows[0])
         {
-            EventManager.Instance.CorrectArrowPressed();           
+            EventManager.Instance.CorrectArrowPressed();
             if (_arrows.Count > 1)
             {
                 _arrows.RemoveAt(0);
-                Destroy(_texts[_arrowIndex].gameObject.transform.parent.gameObject);
+                //Destroy(_texts[_arrowIndex].gameObject.transform.parent.gameObject);
+                Destroy(_imagesToChange[_arrowIndex]);
                 _arrowIndex++;
                 //Resort();
                 //print(_arrows[0]);
             }
-            else if(_arrowIndex == _amount) 
+            else if (_arrowIndex == _amount - 1 )
             {
+                print("Won");
                 EventManager.Instance.WonMiniGame();
                 Destroy(gameObject);
             }
@@ -125,7 +126,7 @@ public class Minigame : MonoBehaviour
 
     private void ExitMinigame()
     {
-        if(GameManager.Instance.Hiding == false || _timeEnded == true)
+        if (GameManager.Instance.Hiding == false || _timeEnded == true)
         {
             Destroy(gameObject);
         }
@@ -146,3 +147,4 @@ public class Minigame : MonoBehaviour
         EventManager.Instance.OnArrowKeyPressed -= CheckForInput;
     }
 }
+

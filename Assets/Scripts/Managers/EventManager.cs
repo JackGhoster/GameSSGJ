@@ -7,6 +7,9 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; }
 
+    public event Action OnGameStarted;
+    public event Action OnGameFinished;
+
     public event Action OnIdling;
     
     public event Action OnWalking;
@@ -32,6 +35,22 @@ public class EventManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+        }
+    }
+
+    public void GameStarted()
+    {
+        if(OnGameStarted != null)
+        {
+            OnGameStarted();
+        }
+    }
+
+    public void GameFinished()
+    {
+        if(OnGameFinished != null)
+        {
+            OnGameFinished();
         }
     }
 
