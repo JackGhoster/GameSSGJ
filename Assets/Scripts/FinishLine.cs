@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,15 @@ public class FinishLine : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            UpdateScore();
             EventManager.Instance.GameFinished();
         }
+    }
+
+    private void UpdateScore()
+    {
+        var score = (int) (GameManager.Instance.Stopwatch * 1000);
+        
+        LeaderboardManager.Instance.SubmitScoreRoutine(score);
     }
 }
