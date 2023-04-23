@@ -50,12 +50,13 @@ public class GameManager : MonoBehaviour
     }
     private void StopStopwatch()
     {
-        CancelInvoke("TickStopWatch");
+        CancelInvoke("TickStopwatch");
+        print($"Time is: {Stopwatch}");
     }
 
     private void TickStopwatch()
     {
         Stopwatch += _timeBias;
-        print($"Time is: {Stopwatch}");
+        //print($"Time is: {Stopwatch}");
     }
 }

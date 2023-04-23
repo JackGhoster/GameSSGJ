@@ -20,7 +20,7 @@ public class HidingBehavior : MonoBehaviour
 
     private void OnEnable()
     {
-        print("SNEAKY");
+        //print("SNEAKY");
         Instantiate(_minigame);
     }
 }

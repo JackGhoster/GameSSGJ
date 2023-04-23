@@ -38,7 +38,7 @@ public class WalkingBehavior : MonoBehaviour
 
     private void OnEnable()
     {
-        InvokeRepeating("CheckForMovement", 1, 2);
+        InvokeRepeating("CheckForMovement", 0.1f, 0.1f);
     }
     private void OnDisable()
     {

@@ -14,7 +14,7 @@ public class IdlingState : AbstractState
 
     public override void ExitState(StateManager manager)
     {
-        Debug.Log("Exiting Idling State");
+        //Debug.Log("Exiting Idling State");
         _idlingBehavior.enabled = false;
     }
 
