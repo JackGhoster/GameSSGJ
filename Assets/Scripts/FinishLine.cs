@@ -30,6 +30,6 @@ public class FinishLine : MonoBehaviour
     {
         var score = (int) (GameManager.Instance.Stopwatch * 1000);
         
-        LeaderboardManager.Instance.SubmitScoreRoutine(score);
+        LeaderboardManager.Instance.SubmitScore(score);
     }
 }
