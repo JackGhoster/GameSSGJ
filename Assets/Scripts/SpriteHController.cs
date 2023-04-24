@@ -18,13 +18,13 @@ public class SpriteHController : MonoBehaviour
     {
         if(_rb != null)
         {
-            if(_rb.velocity.x < 0)
+            if(_rb.velocity.x >= 0)
             {
-                _sRenderer.flipX = true;
+                _sRenderer.flipX = false;
             }
             else
             {
-                _sRenderer.flipX = false;
+                _sRenderer.flipX = true;
             }
         }
     }
