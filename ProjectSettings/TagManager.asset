@@ -62,3 +62,6 @@ TagManager:
   - name: player
     uniqueID: 219920131
     locked: 0
+  - name: gates
+    uniqueID: 552751115
+    locked: 0
