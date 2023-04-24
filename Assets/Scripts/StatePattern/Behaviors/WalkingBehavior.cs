@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WalkingBehavior : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource _walkingSound;
+
     private Rigidbody2D _rb;
     private float _speed = 200;
     private float _horizontalInput = 0;
@@ -42,10 +45,12 @@ public class WalkingBehavior : MonoBehaviour
     private void OnEnable()
     {
         _animator.Play("Base Layer.playerWalking");
+        _walkingSound.Play();
         InvokeRepeating("CheckForMovement", 0.2f, 0.2f);
     }
     private void OnDisable()
     {
+        _walkingSound.Stop();
         CancelInvoke("CheckForMovement");
     }
 

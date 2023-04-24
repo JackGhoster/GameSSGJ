@@ -6,7 +6,12 @@ public class HidingBehavior : MonoBehaviour
 {
     [SerializeField]
     private Minigame _minigame;
+    [SerializeField]
+    private AudioSource _poofSound, _breathSound;
+
     private Animator _animator;
+
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -28,13 +33,16 @@ public class HidingBehavior : MonoBehaviour
         //print("SNEAKY");
         _animator.Play("Base Layer.playerEnteringHiding");
         Invoke("StartMinigame", 0.7f);
+        _poofSound.Play();
     }
     private void OnDisable()
     {
-        
+        _poofSound.Play();
+        _breathSound.Stop();
     }
     private void StartMinigame()
     {
         Instantiate(_minigame);
+        _breathSound.Play();
     }
 }
