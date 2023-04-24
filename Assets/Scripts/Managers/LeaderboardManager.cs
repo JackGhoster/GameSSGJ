@@ -67,7 +67,7 @@ public class LeaderboardManager : MonoBehaviour
                     }
                     else
                     {
-                        tempNames += _anonNicknames[Random.Range(0, _anonNicknames.Count)] + $"{i}";
+                        tempNames += _anonNicknames[Random.Range(0, _anonNicknames.Count)] + $"{Random.Range(1,500)}";
                     }
                     tempScores += (float)members[i].score / 1000 +"s" + "\n";
                     tempNames += "\n";
