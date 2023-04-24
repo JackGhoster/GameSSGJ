@@ -19,13 +19,13 @@ public class Leaderboard : MonoBehaviour
 
     public void GetLeaderboard()
     {
-        LeaderboardCreator.GetLeaderboard(publicKey: _publicLeaderboardKey,  (message) =>
+        LeaderboardCreator.GetLeaderboard(publicKey: _publicLeaderboardKey,isInAscendingOrder: true,  (message) =>
         {
             int loopLength = (message.Length < _names.Count) ? message.Length : _names.Count;
             for(int i = 0; i < loopLength; i++)
             {
                 _names[i].text = message[i].Username;
-                _scores[i].text = $"{(float)(message[i].Score / 100)}s";
+                _scores[i].text = $"{(float) message[i].Score / 100}s";
             }
         });
     }
