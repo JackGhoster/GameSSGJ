@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.OnWonMinigame += RestartMinigame;
         EventManager.Instance.OnGameStarted += StartStopwatch;
         EventManager.Instance.OnGameFinished += StopStopwatch;
+        EventManager.Instance.OnGameLost += ActivateRestartingRoutine;
     }
 
     private void RestartMinigame()
@@ -60,4 +61,16 @@ public class GameManager : MonoBehaviour
         Stopwatch += _timeBias;
         //print($"Time is: {Stopwatch}");
     }
+
+    private void ActivateRestartingRoutine()
+    {
+        Invoke("RestartLvl",1);
+    }
+
+    private void RestartLvl()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+
 }

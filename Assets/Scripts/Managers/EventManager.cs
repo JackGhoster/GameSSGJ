@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
 
     public event Action OnGameStarted;
     public event Action OnGameFinished;
+    public event Action OnGameLost;
 
     public event Action OnIdling;
     
@@ -51,6 +52,14 @@ public class EventManager : MonoBehaviour
         if(OnGameFinished != null)
         {
             OnGameFinished();
+        }
+    }
+
+    public void GameLost()
+    {
+        if(OnGameLost != null)
+        {
+            OnGameLost();
         }
     }
 

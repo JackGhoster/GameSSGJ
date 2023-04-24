@@ -106,7 +106,7 @@ public class Minigame : MonoBehaviour
             }
             else if (_arrowIndex == _amount - 1 )
             {
-                print("Won");
+                //print("Won");
                 EventManager.Instance.WonMiniGame();
                 Destroy(gameObject);
             }

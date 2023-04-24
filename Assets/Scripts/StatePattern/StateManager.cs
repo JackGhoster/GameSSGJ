@@ -29,6 +29,7 @@ public class StateManager : MonoBehaviour
         EventManager.Instance.OnStoppedMoving += SwitchToIdle;
         EventManager.Instance.OnHidingInputPressed += SwitchToHiding;
         EventManager.Instance.OnWrongArrowPressed += SwitchToIdle;
+        EventManager.Instance.OnMinigameTimerEnded += SwitchToIdle;
     }
 
     // Update is called once per frame
@@ -103,5 +104,13 @@ public class StateManager : MonoBehaviour
             SwitchState(IdlingState);
         }
             
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.OnMovementPressed -= SwitchToWalking;
+        EventManager.Instance.OnStoppedMoving -= SwitchToIdle;
+        EventManager.Instance.OnHidingInputPressed -= SwitchToHiding;
+        EventManager.Instance.OnWrongArrowPressed -= SwitchToIdle;
+        EventManager.Instance.OnMinigameTimerEnded -= SwitchToIdle;
     }
 }

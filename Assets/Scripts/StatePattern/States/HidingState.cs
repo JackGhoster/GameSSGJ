@@ -14,6 +14,7 @@ public class HidingState : AbstractState
     public override void ExitState(StateManager manager)
     {
         _hidingBehavior.enabled = false;
+        manager.IdlingState.EnterState(manager);
         //WE NEED TO ADD PARTICLES HERE(when failing or uncovering back to idle state)
     }
 

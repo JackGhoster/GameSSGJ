@@ -19,12 +19,15 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator coroutine;
 
+    private Animator _animator;
+
     // Update is called once per frame
     void Update()
     {
         if (state == 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, _pos[index], Time.deltaTime * _speed);
+            
             if (transform.position.x == _pos[index].x && transform.position.y == _pos[index].y)
             {
                 if (k == 0)
@@ -46,6 +49,7 @@ public class EnemyMovement : MonoBehaviour
         else if (state == 1)
         {
             Debug.Log("Agri boi!!! caught");
+            EventManager.Instance.GameLost();
             state++;
         }
     }

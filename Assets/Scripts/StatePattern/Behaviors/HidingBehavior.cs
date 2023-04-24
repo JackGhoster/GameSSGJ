@@ -31,6 +31,7 @@ public class HidingBehavior : MonoBehaviour
     }
     private void OnDisable()
     {
+        
     }
     private void StartMinigame()
     {
