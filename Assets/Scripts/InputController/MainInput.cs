@@ -71,6 +71,15 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""52d2aba5-2097-4d24-a5a0-bd6dca9efd9d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -194,6 +203,17 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""action"": ""Arrows"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be219c98-ac99-4e6e-bc32-bf0e79811138"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -207,6 +227,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         m_Main_MouseClick = m_Main.FindAction("MouseClick", throwIfNotFound: true);
         m_Main_Hide = m_Main.FindAction("Hide", throwIfNotFound: true);
         m_Main_Arrows = m_Main.FindAction("Arrows", throwIfNotFound: true);
+        m_Main_Exit = m_Main.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +294,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_MouseClick;
     private readonly InputAction m_Main_Hide;
     private readonly InputAction m_Main_Arrows;
+    private readonly InputAction m_Main_Exit;
     public struct MainActions
     {
         private @MainInput m_Wrapper;
@@ -282,6 +304,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         public InputAction @MouseClick => m_Wrapper.m_Main_MouseClick;
         public InputAction @Hide => m_Wrapper.m_Main_Hide;
         public InputAction @Arrows => m_Wrapper.m_Main_Arrows;
+        public InputAction @Exit => m_Wrapper.m_Main_Exit;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -306,6 +329,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @Arrows.started += instance.OnArrows;
             @Arrows.performed += instance.OnArrows;
             @Arrows.canceled += instance.OnArrows;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -325,6 +351,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @Arrows.started -= instance.OnArrows;
             @Arrows.performed -= instance.OnArrows;
             @Arrows.canceled -= instance.OnArrows;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -349,5 +378,6 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         void OnMouseClick(InputAction.CallbackContext context);
         void OnHide(InputAction.CallbackContext context);
         void OnArrows(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }

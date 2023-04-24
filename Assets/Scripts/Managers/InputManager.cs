@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -35,6 +36,13 @@ public class InputManager : MonoBehaviour
         _mainInput.FindAction("Hide").performed += GetHideInput;
 
         _mainInput.FindAction("Arrows").performed += GetArrowsInput;
+
+        _mainInput.FindAction("Exit").performed += Exit;
+    }
+
+    private void Exit(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
     private void GetArrowsInput(InputAction.CallbackContext context)
@@ -82,6 +90,7 @@ public class InputManager : MonoBehaviour
         _mainInput.FindAction("MouseClick").started -= MouseClicked;
         _mainInput.FindAction("Hide").performed -= GetHideInput;
         _mainInput.FindAction("Arrows").performed -= GetArrowsInput;
+        _mainInput.FindAction("Exit").performed -= Exit;
         _mainInput.Disable();
     }
 }
