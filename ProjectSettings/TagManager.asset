@@ -3,15 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - GameManager
-  - EventManager
-  - InputManager
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Level's Base
+  - 
   - Water
   - UI
   - 
@@ -44,6 +41,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
   - name: bg
     uniqueID: 1484308215
     locked: 0
@@ -65,3 +63,5 @@ TagManager:
   - name: gates
     uniqueID: 552751115
     locked: 0
+=======
+>>>>>>> 8db8eff0156d320d839ca2371c3b7eb394323b7e
