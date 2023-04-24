@@ -3,12 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GameManager
+  - EventManager
+  - InputManager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Level's Base
   - Water
   - UI
   - 
@@ -40,4 +43,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: bg
+    uniqueID: 1484308215
+    locked: 0
+  - name: back decorations
+    uniqueID: 1411182905
+    locked: 0
+  - name: decorations
+    uniqueID: 359041373
+    locked: 0
+  - name: brick
+    uniqueID: 644988875
+    locked: 0
+  - name: obstacles
+    uniqueID: 3509279627
+    locked: 0
+  - name: player
+    uniqueID: 219920131
+    locked: 0
+  - name: gates
+    uniqueID: 552751115
     locked: 0
