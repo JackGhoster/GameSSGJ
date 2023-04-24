@@ -16,6 +16,6 @@ public class LeaderBoard : MonoBehaviour
 
     private void Fetch()
     {
-        LeaderboardManager.Instance.FetchTopHighScores(playersText: _players, scoresText: _scores);
+        //LeaderboardManager.Instance.FetchTopHighScores(playersText: _players, scoresText: _scores);
     }
 }
