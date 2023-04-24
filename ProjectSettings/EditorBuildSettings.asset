@@ -12,11 +12,17 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 55e403d108cf3fa4cbe56cfd52a70359
   - enabled: 1
+    path: Assets/Scenes/LevelScene.unity
+    guid: 5f857d0653b7b2e45b4341b0150e3d9b
+  - enabled: 1
+    path: Assets/Scenes/StoryScene.unity
+    guid: 963f34950fa09b44295db41ae7d87cf8
+  - enabled: 1
     path: Assets/Scenes/AchievementsScene.unity
     guid: 755c8af5f8d904741bd2c120b9f51d62
-  - enabled: 1
-    path: Assets/Scenes/CreditsScene.unity
-    guid: 86822df9698b76f4caf80ff35f4c26b9
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/LeaderboardScene.unity
     guid: c952c455257f36f41aab43f915801f4f

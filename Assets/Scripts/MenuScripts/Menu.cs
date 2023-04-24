@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void LoadMain() 
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("LevelScene");
     }
     public void LoadHowToPlay()
     {
@@ -23,7 +23,7 @@ public class Menu : MonoBehaviour
     }
     public void LoadUnlockables() 
     {
-        SceneManager.LoadScene("UnloackablesScene");
+        SceneManager.LoadScene("StoryScene");
     }
     public void LoadCredits()
     {
