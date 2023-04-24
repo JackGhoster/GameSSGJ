@@ -5,12 +5,13 @@ using UnityEngine;
 public class WalkingBehavior : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    private float _speed = 500;
+    private float _speed = 200;
     private float _horizontalInput = 0;
-
+    private Animator _animator;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -40,6 +41,7 @@ public class WalkingBehavior : MonoBehaviour
 
     private void OnEnable()
     {
+        _animator.Play("Base Layer.playerWalking");
         InvokeRepeating("CheckForMovement", 0.2f, 0.2f);
     }
     private void OnDisable()

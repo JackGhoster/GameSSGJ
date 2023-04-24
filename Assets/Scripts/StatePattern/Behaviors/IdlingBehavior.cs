@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class IdlingBehavior : MonoBehaviour
 {
+    private Animator _animator;
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +19,9 @@ public class IdlingBehavior : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnEnable()
+    {
+        _animator.Play("Base Layer.playerIdle");
     }
 }
