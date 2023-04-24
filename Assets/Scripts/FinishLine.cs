@@ -28,7 +28,7 @@ public class FinishLine : MonoBehaviour
 
     private void UpdateScore()
     {
-        var score = (int) (GameManager.Instance.Stopwatch * 1000);
+        
         
         //LeaderboardManager.Instance.SubmitScore(score);
     }

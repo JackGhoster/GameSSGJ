@@ -62722,6 +62722,50 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1934439280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934439282}
+  - component: {fileID: 1934439281}
+  m_Layer: 0
+  m_Name: LeaderboardUploader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1934439281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934439280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f82cc7f7d8f6b48ae8fb5e473639a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1934439282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934439280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 266.2656, y: 179.3139, z: -0.08310276}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1943424117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74874,11 +74918,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 723479189999485866, guid: 83f6c9b1fd1060a4cb0f8428b6cdc877, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.45
+      value: 174.2
       objectReference: {fileID: 0}
     - target: {fileID: 723479189999485866, guid: 83f6c9b1fd1060a4cb0f8428b6cdc877, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 1.24
       objectReference: {fileID: 0}
     - target: {fileID: 723479189999485866, guid: 83f6c9b1fd1060a4cb0f8428b6cdc877, type: 3}
       propertyPath: m_LocalPosition.z
