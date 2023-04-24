@@ -9,12 +9,14 @@ public class Leaderboard : MonoBehaviour
 {
     [SerializeField]
     private List<TextMeshProUGUI> _names, _scores;
-
+    [SerializeField]
+    TextMeshProUGUI _pb;
     private string _publicLeaderboardKey = "5eb833f18e32de9495e650346d7bf3c55bbab10d8d08442c25bf630221d230a5";
 
     private void Start()
     {
         GetLeaderboard();
+        PersonalBest();
     }
 
     public void GetLeaderboard()
@@ -28,5 +30,11 @@ public class Leaderboard : MonoBehaviour
                 _scores[i].text = $"{(float) message[i].Score / 100}s";
             }
         });
+    }
+
+    public void PersonalBest()
+    {
+        if (!PlayerPrefs.HasKey("PersonalBest")) return;
+        _pb.text = $"{System.Math.Round(PlayerPrefs.GetFloat("PersonalBest"),2 )}s";
     }
 }

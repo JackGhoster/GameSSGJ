@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+    using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -12,6 +12,8 @@ public class Minigame : MonoBehaviour
     private List<Image> _imagesToChange = new List<Image>();
     [SerializeField]
     private List<Sprite> _spriteArrows = new List<Sprite>();
+    [SerializeField]
+    private AudioSource _clickSound;
 
     int _arrowIndex = 0;
     private bool _timeEnded = false;
@@ -92,9 +94,10 @@ public class Minigame : MonoBehaviour
 
     private void CheckForInput()
     {
+        _clickSound.Play();
         if (InputManager.Instance.ArrowsVector2 == _arrows[0])
         {
-            EventManager.Instance.CorrectArrowPressed();
+            EventManager.Instance.CorrectArrowPressed();         
             if (_arrows.Count > 1)
             {
                 _arrows.RemoveAt(0);

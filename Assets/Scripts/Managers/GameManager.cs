@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Minigame _minigame;
-
+    [SerializeField]
+    private AudioSource _failSound;
     public bool Hiding { get; set; }
     public float Stopwatch { get; set; }
 
@@ -28,10 +29,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         EventManager.Instance.OnWonMinigame += RestartMinigame;
+        EventManager.Instance.OnMinigameTimerEnded += PlayFailSound;
         EventManager.Instance.OnGameStarted += StartStopwatch;
         EventManager.Instance.OnGameFinished += StopStopwatch;
         EventManager.Instance.OnGameLost += ActivateRestartingRoutine;
         EventManager.Instance.OnGameFinished += ActivateEndingRoutine;
+    }
+
+    private void PlayFailSound()
+    {
+        _failSound.Play();
     }
 
     private void RestartMinigame()

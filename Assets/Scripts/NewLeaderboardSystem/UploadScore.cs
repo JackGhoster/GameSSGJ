@@ -16,11 +16,15 @@ public class UploadScore : MonoBehaviour
     }
     private void Start()
     {
+        
         EventManager.Instance.OnGameFinished += SetLeaderboard;
+        EventManager.Instance.OnGameFinished += PersonalBest;
     }
     public void SetLeaderboard()
     {
         int score = (int)(GameManager.Instance.Stopwatch * 100);
+
+        
         var randomNickname = _anonNicknames[Random.Range(0, _anonNicknames.Count)] + $"{Random.Range(1, 500)}";
         LeaderboardCreator.UploadNewEntry(_publicLeaderboardKey, randomNickname, score, (message) =>
         {
@@ -28,6 +32,25 @@ public class UploadScore : MonoBehaviour
         });
     }
 
+    private void PersonalBest()
+    {
+        if (!PlayerPrefs.HasKey("PersonalBest"))
+        {
+            PlayerPrefs.SetFloat("PersonalBest", 0f);
+        }
+        if(PlayerPrefs.GetFloat("PersonalBest") < GameManager.Instance.Stopwatch)
+        {
+            PlayerPrefs.SetFloat("PersonalBest", GameManager.Instance.Stopwatch);
+            print("Saved PB");
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            return;
+        }
+            
+
+    }
     private void OnDisable()
     {
         EventManager.Instance.OnGameFinished -= SetLeaderboard;
