@@ -20,6 +20,10 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator coroutine;
 
     private Animator _animator;
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -27,13 +31,14 @@ public class EnemyMovement : MonoBehaviour
         if (state == 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, _pos[index], Time.deltaTime * _speed);
-            
+            _animator.SetTrigger("Run");
             if (transform.position.x == _pos[index].x && transform.position.y == _pos[index].y)
             {
                 if (k == 0)
                 {
                     transform.localRotation = Quaternion.Euler(0, -180, 0);
                     k = 1f;
+                    _animator.ResetTrigger("Run");
                     StartCoroutine("WaitFiveSeconds");
                 }
                 else if (k == 1)
@@ -49,6 +54,7 @@ public class EnemyMovement : MonoBehaviour
         else if (state == 1)
         {
             Debug.Log("Agri boi!!! caught");
+            _animator.SetTrigger("Angry");
             EventManager.Instance.GameLost();
             state++;
         }
@@ -58,7 +64,9 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator WaitFiveSeconds()
     {
         state = 2;
+        _animator.SetTrigger("Idle");
         yield return new WaitForSecondsRealtime(_waitTime);
         state = 0;
+        _animator.ResetTrigger("Idle");
     }
 }
