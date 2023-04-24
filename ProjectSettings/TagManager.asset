@@ -41,27 +41,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
   - name: bg
-    uniqueID: 1484308215
+    uniqueID: 1360026955
     locked: 0
-  - name: back decorations
-    uniqueID: 1411182905
+  - name: bottom decorations
+    uniqueID: 3636245561
     locked: 0
   - name: decorations
-    uniqueID: 359041373
+    uniqueID: 4252677625
     locked: 0
   - name: brick
-    uniqueID: 644988875
+    uniqueID: 1642624041
     locked: 0
   - name: obstacles
-    uniqueID: 3509279627
+    uniqueID: 3798044573
     locked: 0
   - name: player
-    uniqueID: 219920131
+    uniqueID: 1495645661
     locked: 0
   - name: gates
-    uniqueID: 552751115
+    uniqueID: 4016402401
     locked: 0
-=======
->>>>>>> 8db8eff0156d320d839ca2371c3b7eb394323b7e
