@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.OnGameStarted += StartStopwatch;
         EventManager.Instance.OnGameFinished += StopStopwatch;
         EventManager.Instance.OnGameLost += ActivateRestartingRoutine;
+        EventManager.Instance.OnGameFinished += ActivateEndingRoutine;
     }
 
     private void RestartMinigame()
@@ -65,6 +66,14 @@ public class GameManager : MonoBehaviour
     private void ActivateRestartingRoutine()
     {
         Invoke("RestartLvl",1);
+    }
+    private void ActivateEndingRoutine()
+    {
+        Invoke("LoadEnding", 3);
+    }
+    private void LoadEnding()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene");
     }
 
     private void RestartLvl()
