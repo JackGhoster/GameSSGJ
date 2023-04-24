@@ -13883,6 +13883,10 @@ PrefabInstance:
       value: Guardian1
       objectReference: {fileID: 0}
     - target: {fileID: 1645965311792556888, guid: bf37aa0e3312f6344b5ec15864c64b67, type: 3}
+      propertyPath: _walkingSound
+      value: 
+      objectReference: {fileID: 998604757}
+    - target: {fileID: 1645965311792556888, guid: bf37aa0e3312f6344b5ec15864c64b67, type: 3}
       propertyPath: _pos.Array.data[0].x
       value: 19
       objectReference: {fileID: 0}
@@ -13932,6 +13936,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1645965311792556889, guid: bf37aa0e3312f6344b5ec15864c64b67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487506684944365108, guid: bf37aa0e3312f6344b5ec15864c64b67, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753135938887297401, guid: bf37aa0e3312f6344b5ec15864c64b67, type: 3}
+      propertyPath: Priority
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753135938887297401, guid: bf37aa0e3312f6344b5ec15864c64b67, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16785,6 +16801,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &998604757 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3487506684944365108, guid: bf37aa0e3312f6344b5ec15864c64b67, type: 3}
+  m_PrefabInstance: {fileID: 555081178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1035420556
 GameObject:
   m_ObjectHideFlags: 0
@@ -68531,6 +68552,10 @@ PrefabInstance:
     - target: {fileID: 188448342922995152, guid: f2a4896d07327ab4086b6992f8f6fb6a, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 188448342922995178, guid: f2a4896d07327ab4086b6992f8f6fb6a, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 188448342922995179, guid: f2a4896d07327ab4086b6992f8f6fb6a, type: 3}
       propertyPath: _target

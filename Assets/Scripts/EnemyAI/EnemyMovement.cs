@@ -20,9 +20,12 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator coroutine;
 
     private Animator _animator;
+    [SerializeField]
+    private AudioSource _walkingSound;
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        //_walkingSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class EnemyMovement : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, _pos[index], Time.deltaTime * _speed);
             _animator.SetTrigger("Run");
+            //_walkingSound.Play();
             if (transform.position.x == _pos[index].x && transform.position.y == _pos[index].y)
             {
                 if (k == 0)
@@ -65,6 +69,7 @@ public class EnemyMovement : MonoBehaviour
     {
         state = 2;
         _animator.SetTrigger("Idle");
+        
         yield return new WaitForSecondsRealtime(_waitTime);
         state = 0;
         _animator.ResetTrigger("Idle");
